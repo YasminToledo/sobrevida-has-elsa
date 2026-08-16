@@ -19,13 +19,13 @@ riscos proporcionais.
 |---|---|
 | `01_Analise Descritiva e KM.R` | Constrói a base analítica a partir dos dados brutos: seleção da coorte, renomeação e rotulagem das variáveis, definição do desfecho, do tempo sob risco e da censura. Gera a tabela descritiva, as taxas de incidência, as curvas de Kaplan-Meier e os testes de log-rank e de Peto. |
 | `02_Cox.R` | Reagrupa o IMC em três categorias, define a base de casos completos dos modelos (n = 375) e ajusta os modelos de Cox simples e os cinco modelos aninhados, comparados pelo teste da razão de verossimilhança. |
-| `05_Schoenfeld.R` | Avalia o pressuposto de riscos proporcionais do Modelo 5 pelos resíduos de Schoenfeld, reajusta o modelo separando os eventos anteriores e posteriores a 4 anos de seguimento e examina resíduos deviance e DFBETAS dos dois períodos. |
+| `03_Schoenfeld.R` | Avalia o pressuposto de riscos proporcionais do Modelo 5 pelos resíduos de Schoenfeld, reajusta o modelo separando os eventos anteriores e posteriores a 4 anos de seguimento e examina resíduos deviance e DFBETAS dos dois períodos. |
 | `04_Figuras.R` | Redesenha, em versão pronta para publicação, as figuras que os três scripts acima já produzem. Não refaz nenhuma estimativa: reaproveita as mesmas chamadas a `survfit`, `coxph`, `survdiff`, `cox.zph` e `resid`, e a curva suavizada de Schoenfeld vem do próprio `survival:::plot.cox.zph`. Grava PNG em 300 dpi e PDF vetorial em `figuras_publicacao/`, junto com as legendas sugeridas. |
 
 ## Ordem de execução
 
 Os scripts compartilham objetos em memória e devem ser rodados na ordem
-`01` → `02` → `05` → `04`, na mesma sessão. O script de figuras também roda
+`01` → `02` → `03` → `04`, na mesma sessão. O script de figuras também roda
 sozinho: ele lê `base_surv2.rds` e reconstrói o que precisa.
 
 ## Dados
